@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		"> 
+	<!-- Action -->
+	<bean id="billAction" class="edu.jyu.erp.invoice.bill.web.BillAction" scope="prototype">
+		<property name="billEbi" ref="billEbi"/>
+		<property name="supplierEbi" ref="supplierEbi"/>
+	</bean>
+	<!-- Ebi -->
+	<bean id="billEbi" class="edu.jyu.erp.invoice.bill.business.ebo.BillEbo">
+		<property name="billDao" ref="billDao"/>
+	</bean>
+	<!-- Dao -->
+	<bean id="billDao" class="edu.jyu.erp.invoice.bill.dao.impl.BillImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

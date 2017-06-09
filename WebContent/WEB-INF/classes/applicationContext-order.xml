@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		"> 
+	<!-- Action -->
+	<bean id="orderAction" class="edu.jyu.erp.invoice.order.web.OrderAction" scope="prototype">
+		<property name="orderEbi" ref="orderEbi"/>
+		<property name="supplierEbi" ref="supplierEbi"/>
+		<property name="goodsTypeEbi" ref="goodsTypeEbi"/>
+		<property name="goodsEbi" ref="goodsEbi"/>
+		<property name="empEbi" ref="empEbi"/>
+		<property name="storeEbi" ref="storeEbi"/>
+	</bean>
+	<!-- Ebi -->
+	<bean id="orderEbi" class="edu.jyu.erp.invoice.order.business.ebo.OrderEbo">
+		<property name="orderDao" ref="orderDao"/>
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+		<property name="storeDetailDao" ref="storeDetailDao"/>
+		<property name="operDetailDao" ref="operDetailDao"/>
+	</bean>
+	<!-- Dao -->
+	<bean id="orderDao" class="edu.jyu.erp.invoice.order.dao.impl.OrderImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

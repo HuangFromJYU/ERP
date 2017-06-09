@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		"> 
+	<!-- Action -->
+	<bean id="orderDetailAction" class="edu.jyu.erp.invoice.orderdetail.web.OrderDetailAction" scope="prototype">
+		<property name="orderDetailEbi" ref="orderDetailEbi"/>
+	</bean>
+	<!-- Ebi -->
+	<bean id="orderDetailEbi" class="edu.jyu.erp.invoice.orderdetail.business.ebo.OrderDetailEbo">
+		<property name="orderDetailDao" ref="orderDetailDao"/>
+	</bean>
+	<!-- Dao -->
+	<bean id="orderDetailDao" class="edu.jyu.erp.invoice.orderdetail.dao.impl.OrderDetailImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>
